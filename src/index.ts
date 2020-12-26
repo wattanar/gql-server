@@ -1,4 +1,5 @@
 import { ApolloServer, gql } from "apollo-server-express";
+import compression from "compression";
 import cookieParser from "cookie-parser";
 import express from "express";
 import { merge } from "lodash";
@@ -23,6 +24,7 @@ const server = new ApolloServer({
 const app = express();
 
 app.use(cookieParser());
+app.use(compression);
 
 server.applyMiddleware({ app });
 
