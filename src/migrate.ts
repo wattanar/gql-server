@@ -1,9 +1,8 @@
 import db from "./db";
-
-db.schema.dropTable("users").then((res) => console.log(res));
+import knex from "knex";
 
 (async () => {
-  await db.schema.createTable("users", (table) => {
+  await db.schema.createTable("users", (table: knex) => {
     table.increments("id");
     table.string("username", 100).unique().notNullable();
     table.string("password", 100).notNullable();
